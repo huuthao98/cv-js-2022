@@ -371,8 +371,9 @@ header.scrolled .navLink::after{
 .aboutCard i {
     transform: rotateY(0deg);
     transition: transform 0.7s ; 
-
 }
+
+
 
 .aboutCard:nth-child(1) {
     border-radius: 40px 40px 5px 40px;
@@ -404,24 +405,17 @@ header.scrolled .navLink::after{
     font-size: 2rem;
 }
 .aboutCard:hover .icon{
-    color: #333;
+    color: rgb(235, 227, 17);
 }
 
 
 .aboutCard:hover.aboutCardEat {
-    background-image: url(/assets/bunbo.jpg);
     background-size: cover;
 }
 
-.aboutCard:hover.aboutCardLearn {
-    background-image: url(/assets/kma.jpg);
-    background-size: 50%;
-    background-repeat: no-repeat;
-    background-position: 50%;
-}
+
 
 .aboutCard:hover.aboutCardCode {
-    background-image: url(/assets/code.jpg) ;
     background-size: cover;
     
 }
@@ -433,7 +427,7 @@ header.scrolled .navLink::after{
     overflow: hidden;
     align-items: center;
     display: inline-flex;
-    height: 30px;
+    height: 32px;
 }
 .slogan {
     animation-name: title-change;
