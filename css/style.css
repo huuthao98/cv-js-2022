@@ -1,0 +1,493 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* ---------------------WEB THEME ----------------- */
+:root {
+    --hue-1: 257;
+    --hue-2:47;
+    --bg-color: hsl(var(--hue-1), 100%, 97%);
+    --main-color-1: hsl(var(--hue-1), 100%, 60%);
+    --main-color-dark-1: hsl(var(--hue-1), 69%, 50%);
+    --main-color-2: hsl(var(--hue-2), 100%, 61%);
+    --main-color-dark-2: hsl(var(--hue-2), 82%, 55%);
+    --bg-color-1: hsl(var(--hue-1), 100%, 97%);
+    --bg-color-2: #fff;
+    --bg-color-3: hsl(var(--hue-1), 100%, 98%);
+    --bg-color-transparent: rgb(255, 255, 255);
+    --heading-color: hsl(var(--hue-1), 61%, 24%);
+    --text-color: #333;
+
+    --seaction-padding: 7rem;
+;}
+
+*, 
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* ---------------GENERAL SYTLE-------------------------- */
+
+body {
+    overflow-x: hidden;
+    background-color: hsl(257, 100%, 97%);
+    font-family:"Poppins", sans-serif ;
+}
+
+::selection {
+    background-color: hsla(var(--hue-1), 100%, 60%, 0.9) ;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ---------------Reusable SYTLE-------------------------- */
+
+.container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 75rem;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+.logo {
+    margin-right: 1.5rem;
+    font-family: "Abril Fatface", cursive;
+    font-size: 1.5rem;
+    color: var(--heading-color);
+    letter-spacing: 1px;
+    transition: 0.3s;
+
+}
+.logo span {
+    color: var(--main-color-1);
+}
+
+.subHeading {
+    color: var(--heading-color);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border-left: 3px solid var(--main-color-2);
+    padding: 0.13rem 0.75rem;
+    font-weight: 500;
+ }
+
+.heading {
+    color: var(--heading-color);
+    font-size: 3rem;
+    font-family: "Abril Fatface" cursive;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.text {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin: 2rem 0;
+}
+
+.section {
+    position: relative;
+    padding: var(--seaction-padding) 0 ;
+}
+
+.icon {
+    font-size: 4rem;
+}
+
+/* ---------------NAVBAR SYTLE-------------------------- */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+header.scrolled {
+    background-color: var(--bg-color-transparent);
+    /* background-color: red */
+    box-shadow: 0 5px 20px 0.1px rgba(0, 0, 0, 0.1);
+}
+
+nav.contaiter {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header .logo {
+    height: 120px;
+    line-height: 120px;
+}
+
+header .toggle {
+    height: 120px;
+    line-height: 120px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+header.scrolled  {
+    height: 80px;
+    line-height: 80px;
+}
+
+
+header.scrolled .logo {
+    height: 80px;
+    line-height: 80px;
+}
+header.scrolled .links {
+    height: 80px;
+    line-height: 80px;
+}
+header.scrolled .toggle {
+    height: 80px;
+    line-height: 80px;
+}
+
+header.scrolled .navLink::after{
+    bottom: 40%;
+}
+
+.links {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    transition: 0.3s;
+
+}
+
+.links ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+.navLink {
+    position: relative;
+   display: inline-block;
+   margin: 0 1rem;
+   text-transform: uppercase;
+   font-size: 0.8rem;
+   letter-spacing: 0.5px;
+   color: var(--text-color);
+   font-weight: 500;
+   opacity: 0.9;
+   transition: 0.3;
+}
+
+.navLink::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 10px;
+    border-radius: 5px;
+    background-color: var(--main-color-1);
+    bottom: 0;
+    left: -5px;
+    z-index: -1;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.navLink:hover {
+    color: var(--heading-color);
+}
+
+.navLink:hover::after {
+    width: 100%;
+    opacity: 0.2;
+}
+
+.toggleBtn {
+    color: var(--heading-color);
+    min-width: 40px;
+    height: 40px;
+    background-color:var(--bg-color-2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+
+}
+
+.toggleBtn:hover {
+    filter: brightness(90%);
+}
+
+/* ---------------Showcase Area SYTLE-------------------------- */
+
+.showcaseArea {
+    padding: 120px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.showcaseArea .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: calc(100vh - 120px);
+    max-height: 600px;
+    align-items: center;
+}
+
+.showcaseArea .subHeading {
+   margin-bottom: 0.7rem;
+}
+
+.showcaseArea .heading {
+    font-size: 3.5rem;
+ }
+ .showcaseArea .text {
+    margin: 0.8rem 0;
+ }
+
+.cta {
+    margin-top: 3.5rem;
+    display: flex;
+    align-items: center;
+ }
+
+ .cta .btn {
+     margin-right: 1.5rem;
+ }
+
+ .btn {
+    display: inline-block;
+    padding: 0.9rem 1.75rem;
+    border-radius: 17px;
+    background-color: var(--main-color-1 );
+    color: var(--bg-color);
+    font-size: 0.85rem;
+    letter-spacing: 0.4px; 
+    text-transform: capitalize;
+
+    transition: 0.3s;
+ }
+
+ .btn:hover {
+     background-color: var(--main-color-dark-1);
+ }
+ .btn.secondaryBtn {
+     position: relative;
+     background-color: transparent;
+     color: var(--main-color-1);
+     font-size: 0.9rem;
+     font-weight: 500;
+     letter-spacing: 0px;
+     border-bottom: 2.5px solid var(--main-color-2);
+     border-radius: 0px;
+     padding: 0.15rem 0;
+ }
+
+ .btn.secondaryBtn::before {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2.5px;
+    bottom: -2.5px;
+    left: 0;
+    background-color: var(--main-color-1);
+    transition: 0.3s ease-in-out;
+}
+
+.btn.secondaryBtn:hover::before {
+    width: 100%;
+}
+
+.showcaseImage {
+    position: relative;
+    width: 100%;
+    min-height: calc(100% + 120px);
+    margin-top: -120px;
+}
+
+.showcaseImage .person {
+    position: absolute;
+    width: 90%;
+    border-radius: 0 0 80px 80px;
+
+}
+/* ---------------About styling-------------------------- */
+.about .container {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+}
+.aboutGird {
+    position: relative;
+    display: grid;
+    grid-template-columns: 190px 190px;
+    grid-template-rows: 190px 190px ;
+    justify-content: center;
+    column-gap: 2.5rem;
+    row-gap: 100px;
+    margin-right: 2rem;
+
+}
+
+.aboutGird::before {
+    content: "";
+    position: absolute;
+    width: 210px;
+    height: 210px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 15px solid var(--main-color-1);
+    z-index: -1;
+}
+
+
+.aboutCard {
+    background-color: var(--bg-color-2);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+
+.aboutCard i {
+    transform: rotateY(0deg);
+    transition: transform 0.7s ; 
+
+}
+
+.aboutCard:nth-child(1) {
+    border-radius: 40px 40px 5px 40px;
+}
+.aboutCard:nth-child(2) {
+    margin-top: 50px;
+    border-radius: 40px 40px 40px 5px;
+}
+
+.aboutCard:nth-child(3) {
+    margin-top: -50px;
+    border-radius: 40px 5px 40px 40px;
+}
+.aboutCard:nth-child(4) {
+    border-radius: 5px 40px 40px 40px;
+}
+
+.aboutCard h3 {
+    color: var(--heading-color);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 1rem;
+    letter-spacing: 0.3px;
+}
+
+.aboutCard:hover i{
+    transform: rotateY(180deg);
+    transform-style: preserve-3d;
+    font-size: 2rem;
+}
+.aboutCard:hover .icon{
+    color: #333;
+}
+
+
+.aboutCard:hover.aboutCardEat {
+    background-image: url(/assets/bunbo.jpg);
+    background-size: cover;
+}
+
+.aboutCard:hover.aboutCardLearn {
+    background-image: url(/assets/kma.jpg);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.aboutCard:hover.aboutCardCode {
+    background-image: url(/assets/code.jpg) ;
+    background-size: cover;
+    
+}
+
+
+
+/* -----SLOGAN---- */
+.text.textSlogan {
+    overflow: hidden;
+    align-items: center;
+    display: inline-flex;
+    height: 30px;
+}
+.slogan {
+    animation-name: title-change;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+
+    align-items: center;
+    list-style-type: none;
+
+    display: block;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
+
+}
+
+@keyframes title-change {
+    0%, 12.66%, 100% {
+        transform: translate3d(0, 37%, 0);
+    } 16.66%, 29.32% {
+        transform: translate3d(0, 12%, 0);
+    }33.32%, 45.98% {
+        transform: translate3d(0, -13%, 0);
+    }66.64%, 79.3% {
+        transform: translate3d(0, -13%, 0);
+    }83.3%, 95.96% {
+        transform: translate3d(0, 12%, 0);
+    }
+    
+}
+
+.sloganContent{
+    height: 30px;
+    line-height: 31px;
+    margin-bottom:2px ;
+    display: flex;
+    justify-content: center;
+}
+
+.blinker {
+    color: #8affad;
+    animation-name: title-opacity;
+    animation-duration: 2s;
+    animation-iteration-count: infinite 
+}
+
+@keyframes title-opacity {
+    0%, 100% {
+        opacity: 0;
+    }50% {
+        opacity: 1;
+    }  
+}
+
