@@ -413,8 +413,6 @@ header.scrolled .navLink::after{
     background-size: cover;
 }
 
-
-
 .aboutCard:hover.aboutCardCode {
     background-size: cover;
     
