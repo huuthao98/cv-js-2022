@@ -18,3 +18,5 @@ let sr = ScrollReveal({
 
 sr.reveal(".showcaseInfo", {deplay: 300});
 sr.reveal(".showcaseImage", {origin: "top",deplay: 300});
+
+ // -------------- Music ----------------
