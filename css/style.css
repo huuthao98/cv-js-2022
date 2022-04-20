@@ -365,12 +365,12 @@ header.scrolled .navLink::after{
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
 }
 
 .aboutCard i {
     transform: rotateY(0deg);
-    transition: transform 0.7s ; 
+    transition: transform 0.7s ;
+    color: #333; 
 }
 
 
@@ -482,4 +482,62 @@ header.scrolled .navLink::after{
         opacity: 1;
     }  
 }
+
+/* ---------------Services styling-------------------------- */
+.services {
+    padding: 120px 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.services .container {
+    display: grid;
+    grid-template-rows: .2fr 1fr;
+}
+ .servicesGird {
+    position: relative;
+    display: grid;
+    grid-template-columns: 190px 190px 190px;
+    grid-template-rows: 190px 190px ;
+    justify-content: center;
+    column-gap: 2.5rem;
+    row-gap: 100px;
+    margin-right: 2rem;
+
+}
+
+.servicesCard {
+    background-color: var(--bg-color-2);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    
+}
+
+
+.services .control{
+    align-items: center;
+    display: flex;
+    margin-left: 10px
+}
+
+.services .icon{
+    font-size: .85rem;
+}
+
+.services .iconPause {
+    display: none;
+}
+
+.services.playing .iconPause {
+    display: inline-block;
+  }
+  
+.services.playing .iconPlay {
+    display: none;
+  }
 
