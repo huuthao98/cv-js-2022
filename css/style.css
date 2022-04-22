@@ -368,8 +368,6 @@ header.scrolled .navLink::after{
 }
 
 .aboutCard i {
-    transform: rotateY(0deg);
-    transition: transform 0.7s ;
     color: #333; 
 }
 
@@ -400,8 +398,6 @@ header.scrolled .navLink::after{
 }
 
 .aboutCard:hover i{
-    transform: rotateY(180deg);
-    transform-style: preserve-3d;
     font-size: 2rem;
 }
 .aboutCard:hover .icon{
@@ -489,17 +485,23 @@ header.scrolled .navLink::after{
     width: 100%;
     overflow: hidden;
 }
+.services i {
+    transform: rotateY(0deg);
+    transition: transform 1s ;
+}
 
 .services .container {
     display: grid;
-    grid-template-rows: .2fr 1fr;
+   
+
+
 }
  .servicesGird {
     position: relative;
     display: grid;
     grid-template-columns: 190px 190px 190px;
-    grid-template-rows: 190px 190px ;
-    justify-content: center;
+    grid-template-rows:190px;
+    justify-content: center; 
     column-gap: 2.5rem;
     row-gap: 100px;
     margin-right: 2rem;
@@ -516,6 +518,14 @@ header.scrolled .navLink::after{
     justify-content: center;
     cursor: pointer;
     
+}
+
+.servicesCard:hover i {
+    transform: rotateY(180deg);
+    color: var(--main-color-2);
+}
+.servicesCard.active i {
+    color: red;
 }
 
 
@@ -541,3 +551,84 @@ header.scrolled .navLink::after{
     display: none;
   }
 
+  /* ---------------skills styling-------------------------- */
+
+  .skills {
+      overflow: hidden;
+  }
+
+
+.skillsBox {
+    background-color: var(--bg-color-2); 
+    padding: 5rem 6rem;
+    border-radius:20px ; 
+    width: 100%;
+  }
+
+ .skillsWrap { 
+      display: grid;
+      grid-template-columns: repeat(4, 150px);
+      margin-top: 2rem;
+      justify-content: space-between;
+  }
+
+  .skill {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .skProgress {
+    /* do rong cua grid */
+      width: 150px; 
+      height: 150px;
+      position: relative;
+  }
+
+  .skProgress svg {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-90deg);
+  }
+
+  .skProgress svg circle {
+      fill: var(--bg-color-3);
+      stroke-width: 5px;
+      stroke: var(--main-color-1);
+      stroke-linecap: round;
+      stroke-dasharray: 427;
+      stroke-dashoffset: 427;
+  }
+
+  @keyframes progress {
+      to {
+          stroke-dashoffset: var(--target);
+      }
+      
+  }
+
+  .counter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: var(--heading-color);
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.counter span {
+    font-size: 2.45rem;
+}
+
+.skTitle {
+    color: var(--heading-color);
+    margin-top: 0.75rem;
+    font-weight: 400;
+    font-size: 1rem;
+}

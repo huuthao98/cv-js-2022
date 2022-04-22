@@ -99,10 +99,10 @@ const appMusic =  {
       
     },
     // xu ly end song
-    audio.onended = function() {
-      // end khi on repeat va random
-      nextBtn.click()
-    }
+    // audio.onended = function() {
+    //   // end khi on repeat va random
+    //   nextBtn.click()
+    // }
     //xu ly next song
     nextBtn.onclick = function() {
       _this.nextSong()
@@ -112,13 +112,14 @@ const appMusic =  {
     //xu ly click vao list song
     servicesGird.onclick = function(e) {
       const songNode = e.target.closest('.servicesCard:not(.active)')
-    
-                if (songNode) {
-                    _this.currentIndex = Number(songNode.dataset.index)
-                    _this.loadCurrentSong()
-                    _this.render()
-                    audio.play()
-                }
+        if (songNode) {
+            _this.currentIndex = Number(songNode.dataset.index)
+            _this.loadCurrentSong()
+            _this.render()
+            audio.play()
+        } else {
+          audio.pause()
+        }
     }  
   
   },
@@ -134,3 +135,53 @@ const appMusic =  {
   }
 }
 appMusic.start()
+
+ // -------------- SKILLS ----------------
+
+ const firstSkill = $('.skill:first-child')
+ const skCounters = $$('.counter span')
+ const progressBars = $$('.skills svg circle')
+
+ window.addEventListener('scroll', () => {
+  if(!skillsPlayed) skillsCounter();
+ })
+
+function hasReached(el) {
+  let topPosition = el.getBoundingClientRect().top;
+  
+  if(window.innerHeight >= (topPosition + el.offsetHeight) ) return true;
+  return false
+}
+
+function updateCount(num, maxNum) {
+  let currentNum = +num.innerText;
+
+  if(currentNum <maxNum) {
+    num.innerText = currentNum + 1;
+    setTimeout(() =>{
+      updateCount(num, maxNum);
+    }, 12)
+  }
+}
+
+let skillsPlayed = false;
+
+function skillsCounter() {
+  if(!hasReached(firstSkill)) return;
+  skillsPlayed = true;
+
+  skCounters.forEach((counter, i) => {
+    let target = +counter.dataset.target;
+    
+    let strokeValue = 427 -427 * (target / 100)
+    progressBars[i].style.setProperty("--target", strokeValue)
+    
+    setTimeout(() =>{
+      updateCount(counter, target)
+    }, 1000)
+  
+  })
+
+  
+  progressBars.forEach((p) => (p.style.animation = "progress 2s ease-in-out forwards"));
+ }
