@@ -55,7 +55,7 @@ const appMusic =  {
         const htmls = this.songs.map((song, index) => {
             return `
             <div class="servicesCard ${index === this.currentIndex ? 'active' : ''}" data-index="${index}" >
-            ${song.icon}
+              <div class="cardIcon">${song.icon}</div>
             </div>
             `
         });
@@ -185,3 +185,41 @@ function skillsCounter() {
   
   progressBars.forEach((p) => (p.style.animation = "progress 2s ease-in-out forwards"));
  }
+
+ 
+ // -------------- change page theme ----------------
+
+ const toggleBtn = $('.toggleBtn')
+
+ let fistTheme = localStorage.getItem('dark')
+ changeTheme(+fistTheme)
+ function changeTheme(isDark) {
+   if(isDark) {
+    document.body.classList.add("dark")
+    toggleBtn.classList.replace("fa-moon", "fa-sun")
+    localStorage.setItem("dark", 1 )
+   } else {
+    document.body.classList.remove("dark")
+    toggleBtn.classList.replace("fa-sun", "fa-moon")
+    localStorage.setItem("dark", 0)
+
+   }
+ }
+
+ toggleBtn.addEventListener("click", () => {
+   changeTheme(!document.body.classList.contains("dark"));
+ })
+
+ //-----------humberger----------------
+ const humburger = $('.hamburger')
+ const links = $$('.navLink')
+ humburger.addEventListener("click", () => {
+   document.body.classList.toggle('open')
+
+ }) 
+
+ links.forEach((link)=> 
+ link.addEventListener('click',()=> {
+    document.body.classList.remove("open")
+   })
+ )

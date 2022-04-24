@@ -3,21 +3,49 @@
 :root {
     --hue-1: 257;
     --hue-2:47;
-    --bg-color: hsl(var(--hue-1), 100%, 97%);
     --main-color-1: hsl(var(--hue-1), 100%, 60%);
     --main-color-dark-1: hsl(var(--hue-1), 69%, 50%);
     --main-color-2: hsl(var(--hue-2), 100%, 61%);
     --main-color-dark-2: hsl(var(--hue-2), 82%, 55%);
-    --bg-color-1: hsl(var(--hue-1), 100%, 97%);
+    
+    --seaction-padding: 7rem;
+} 
+
+body {
+    --bg-color: hsl(var(--hue-1), 100%, 97%);
+    --bg-color-1: hsl(var(--hue-1), 100%, 95.5%);
     --bg-color-2: #fff;
     --bg-color-3: hsl(var(--hue-1), 100%, 98%);
     --bg-color-transparent: rgb(255, 255, 255);
     --heading-color: hsl(var(--hue-1), 61%, 24%);
     --text-color: #333;
+}
 
-    --seaction-padding: 7rem;
-;}
+body.dark {
+    --bg-color: hsl(var(--hue-1), 19%, 15%);
+    --bg-color-1: hsl(var(--hue-1), 21%, 11%);
+    --bg-color-2: hsl(var(--hue-1), 23%, 19%);
+    --bg-color-3: hsl(var(--hue-1), 23%, 24%);
+    --bg-color-transparent: hsla(var(--hue-1), 23%, 19%, 1);
+    --heading-color: hsl(var(--hue-1), 100%, 95%);
+    --text-color: hsl(var(--hue-1), 14%, 51%);
+}
 
+body.dark .toggleBtn {
+    background-color: var(--bg-color-3);
+}
+
+body.dark .toggleBtn:hover {
+    background-color: brightness(110%);
+}
+
+body.dark .navLink:hover::after {
+    opacity: 0.6;
+}
+
+body.dark .formInput:hover {
+    filter: brightness(110%);
+}
 *, 
 *::before,
 *::after {
@@ -26,11 +54,15 @@
     box-sizing: border-box;
 }
 /* ---------------GENERAL SYTLE-------------------------- */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     overflow-x: hidden;
-    background-color: hsl(257, 100%, 97%);
+    background-color: var(--bg-color);
     font-family:"Poppins", sans-serif ;
+    transition: 0.3s background-color;
 }
 
 ::selection {
@@ -103,6 +135,55 @@ ul {
     font-size: 4rem;
 }
 
+.btn {
+    display: inline-block;
+    padding: 0.9rem 1.75rem;
+    border-radius: 17px;
+    background-color: var(--main-color-1 );
+    color: var(--bg-color);
+    font-size: 0.85rem;
+    letter-spacing: 0.4px; 
+    text-transform: capitalize;
+   
+
+    transition: 0.3s;
+
+    border: none;
+    outline: none;
+    font-family: inherit;
+    cursor: pointer;
+ }
+
+ .btn:hover {
+     background-color: var(--main-color-dark-1);
+ }
+
+ .btn.secondaryBtn {
+    position: relative;
+    background-color: transparent;
+    color: var(--main-color-1);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0px;
+    border-bottom: 2.5px solid var(--main-color-2);
+    border-radius: 0px;
+    padding: 0.15rem 0;
+}
+
+.btn.secondaryBtn::before {
+   content: "";
+   position: absolute;
+   width: 0%;
+   height: 2.5px;
+   bottom: -2.5px;
+   left: 0;
+   background-color: var(--main-color-1);
+   transition: 0.3s ease-in-out;
+}
+
+.btn.secondaryBtn:hover::before {
+   width: 100%;
+}
 /* ---------------NAVBAR SYTLE-------------------------- */
 
 header {
@@ -120,16 +201,16 @@ header.scrolled {
     box-shadow: 0 5px 20px 0.1px rgba(0, 0, 0, 0.1);
 }
 
-nav.contaiter {
+header .container {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 }
 
-header .logo {
+/* header .logo {
     height: 120px;
     line-height: 120px;
-}
+} */
 
 header .toggle {
     height: 120px;
@@ -139,20 +220,12 @@ header .toggle {
     transition: 0.3s;
 }
 
-header.scrolled  {
-    height: 80px;
-    line-height: 80px;
-}
-
 
 header.scrolled .logo {
     height: 80px;
     line-height: 80px;
 }
-header.scrolled .links {
-    height: 80px;
-    line-height: 80px;
-}
+
 header.scrolled .toggle {
     height: 80px;
     line-height: 80px;
@@ -180,15 +253,15 @@ header.scrolled .navLink::after{
 
 .navLink {
     position: relative;
-   display: inline-block;
-   margin: 0 1rem;
-   text-transform: uppercase;
-   font-size: 0.8rem;
-   letter-spacing: 0.5px;
-   color: var(--text-color);
-   font-weight: 500;
-   opacity: 0.9;
-   transition: 0.3;
+    display: inline-block;
+    margin: 0 1rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+    font-weight: 500;
+    opacity: 0.9;
+    transition: 0.3;
 }
 
 .navLink::after {
@@ -233,6 +306,44 @@ header.scrolled .navLink::after{
     filter: brightness(90%);
 }
 
+.hamburger {
+    position: relative;
+    padding: 1rem 0;
+    height: 12px;
+    width: 25px;
+    box-sizing: content-box;
+    cursor: pointer;
+    display: none;
+    /* text-align: center; */
+}
+
+.hamburger .bar {
+    width: 100%;
+    height: 2px;
+    background-color: var(--heading-color);
+    border-radius: 3px;
+    position: absolute;
+}
+.hamburger .bar:first-child {
+    top: 1rem;
+    transition: top 0.2s 0.15s, transform 0.3s ;
+}
+
+.hamburger .bar:last-child {
+    bottom: 1rem;
+    transition: bottom 0.2s 0.15s, transform 0.3s ;
+}
+
+body.open .hamburger .bar:first-child {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+    transition: top 0.2s, transform 0.3s 0.1s;
+}
+body.open .hamburger .bar:last-child {
+    bottom: 50%;
+    transform: translateY(50%) rotate(45deg);
+    transition: bottom 0.2s, transform 0.3s 0.1s;
+}
 /* ---------------Showcase Area SYTLE-------------------------- */
 
 .showcaseArea {
@@ -245,7 +356,7 @@ header.scrolled .navLink::after{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     height: calc(100vh - 120px);
-    max-height: 600px;
+    height: 600px;
     align-items: center;
 }
 
@@ -270,48 +381,7 @@ header.scrolled .navLink::after{
      margin-right: 1.5rem;
  }
 
- .btn {
-    display: inline-block;
-    padding: 0.9rem 1.75rem;
-    border-radius: 17px;
-    background-color: var(--main-color-1 );
-    color: var(--bg-color);
-    font-size: 0.85rem;
-    letter-spacing: 0.4px; 
-    text-transform: capitalize;
 
-    transition: 0.3s;
- }
-
- .btn:hover {
-     background-color: var(--main-color-dark-1);
- }
- .btn.secondaryBtn {
-     position: relative;
-     background-color: transparent;
-     color: var(--main-color-1);
-     font-size: 0.9rem;
-     font-weight: 500;
-     letter-spacing: 0px;
-     border-bottom: 2.5px solid var(--main-color-2);
-     border-radius: 0px;
-     padding: 0.15rem 0;
- }
-
- .btn.secondaryBtn::before {
-    content: "";
-    position: absolute;
-    width: 0%;
-    height: 2.5px;
-    bottom: -2.5px;
-    left: 0;
-    background-color: var(--main-color-1);
-    transition: 0.3s ease-in-out;
-}
-
-.btn.secondaryBtn:hover::before {
-    width: 100%;
-}
 
 .showcaseImage {
     position: relative;
@@ -324,7 +394,6 @@ header.scrolled .navLink::after{
     position: absolute;
     width: 90%;
     border-radius: 0 0 80px 80px;
-
 }
 /* ---------------About styling-------------------------- */
 .about .container {
@@ -368,7 +437,7 @@ header.scrolled .navLink::after{
 }
 
 .aboutCard i {
-    color: #333; 
+    color:var(--main-color-1); 
 }
 
 
@@ -479,11 +548,42 @@ header.scrolled .navLink::after{
     }  
 }
 
+.formInput {
+    display: inline-block;
+    padding: 0.9rem 1.5rem;
+    background-color: var(--bg-color-3);
+    border: 2px solid var(--bg-color-3);
+    width: 100%;
+    border-radius: 17px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    color: var(--heading-color);
+    outline: none;
+    transition: 0.3s;
+}
+.formInput::placeholder {
+    color: var(--text-color);
+}
+
+.formInput:hover {
+    filter: brightness(97%);
+}
+
+.formInput:valid, 
+.formInput:focus  {
+    filter: brightness(100%);
+    background: var(--bg-color-1);
+    border-color: var(--main-color-1);
+}
 /* ---------------Services styling-------------------------- */
 .services {
     padding: 120px 0;
     width: 100%;
     overflow: hidden;
+}
+
+.servicesInfo {
+    margin-bottom: 20px;
 }
 .services i {
     transform: rotateY(0deg);
@@ -492,23 +592,21 @@ header.scrolled .navLink::after{
 
 .services .container {
     display: grid;
-   
-
 
 }
  .servicesGird {
     position: relative;
-    display: grid;
-    grid-template-columns: 190px 190px 190px;
-    grid-template-rows:190px;
+    display: flex;
+
     justify-content: center; 
     column-gap: 2.5rem;
-    row-gap: 100px;
+    row-gap: 2.5rem;
     margin-right: 2rem;
+    
+    flex-wrap: wrap;
 
 }
-
-.servicesCard {
+.cardIcon {
     background-color: var(--bg-color-2);
     width: 100%;
     height: 100%;
@@ -517,7 +615,11 @@ header.scrolled .navLink::after{
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    
+}
+
+.servicesGird .servicesCard {
+    width: 190px;
+    height: 190px;
 }
 
 .servicesCard:hover i {
@@ -631,4 +733,296 @@ header.scrolled .navLink::after{
     margin-top: 0.75rem;
     font-weight: 400;
     font-size: 1rem;
+}
+
+/* ---------------CONTACT SYTLE-------------------------- */
+
+.contact .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 4rem;
+}
+
+.mail {
+    color: var(--main-color-1);
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.mail i {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-left: 2px;
+    transform: translateX(3px);
+    transition: 0.3s margin-left;
+}
+.mail:hover {
+    color: var(--main-color-dark-1);
+}
+.mail:hover i{
+    margin-left: 10px;
+}
+
+.contactForm {
+    background-color: var(--bg-color-2);
+    border-radius: 20px;
+    padding: 3.5rem 3rem ;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactForm h3 {
+    color: var(--heading-color);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 1.6rem;
+    line-height: 0.9;
+}
+
+
+
+textarea.formInput {
+    resize: none;
+    min-height: 170px;
+}
+.contactForm .formInput {
+    margin-bottom: 1.5rem;
+}
+
+/* ---------------Footer styling-------------------------- */
+
+footer {
+    padding: 4rem 0;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+footer .socialMedia {
+    display: flex;
+}
+
+ .socialLink {
+     width: 35px;
+     height: 35px;
+     border-radius: 50%;
+     margin-left: 1rem;
+     background-color: var(--bg-color-1);
+     color: var(--text-color);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     transition: 0.3s;
+ }
+
+ .socialLink:hover {
+     color: var(--main-color-1);
+ }
+
+/* ---------------1000px SYTLE-------------------------- */
+
+@media (max-width: 1000px) {
+    .subHeading {
+        font-size: 0.75rem;
+    }
+    .heading {
+        font-size: 2rem;
+    }
+    .showcaseArea .heading {
+        font-size: 2.5rem;
+     }
+    .text {
+        font-size: 0.84rem;
+        margin: 1.3rem 0;
+    }
+    .btn {
+        padding: 0.8rem 1.6rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+    .btn.secondaryBtn {
+        font-size: 0.8rem;
+    }
+    .formInput {
+        padding: 0.8rem 1.45rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+
+    .logo {
+        font-size: 1.45rem;
+    }
+
+    .navLink {
+    font-size: 0.7rem;
+    }
+
+    .showcaseArea {
+        padding: 100px 0;
+    }
+    .showcaseArea .container {
+        grid-template-columns: 1fr 400px;
+        height:450px;
+    }
+
+    .aboutGird {
+    grid-template-columns: 170px 170px;
+    grid-template-rows: 170px 170px ;
+    column-gap: 2rem;
+    row-gap: 85px;
+    margin-right: 1.85rem; 
+    }
+
+    .icon {
+        font-size: 3.75rem;
+    }
+
+    .servicesGird .servicesCard {
+        width: 170px;
+        height: 170px;
+    }
+
+    .skillsBox{
+        padding: 4rem;
+    }
+
+    .skProgress {
+        transform: scale(0.85);
+    }
+
+    .contact .container {
+        column-gap: 2rem;
+    }
+    .contactForm {
+        padding: 2.5rem 2rem;
+    }
+
+    .contactForm h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .contact .formInput {
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* ---------------768px SYTLE-------------------------- */
+
+@media (max-width: 768px) {
+    :root {
+        --seaction-padding: 4.5rem;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    header {
+        background-color: var(--bg-color-2);
+        line-height: 80px;
+    }
+
+    header nav {
+        justify-content: space-between;
+    }
+    header.logo {
+        height: 80px;
+        line-height: 80px;
+    }
+    header.scrolled .logo {
+        height: 60px;
+        line-height: 60px;
+    }
+    header .toggle {
+        height: 0;
+        line-height: 0;
+    }
+    
+    .links {
+        order: 3;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 02rem;
+    }
+
+    .links ul {
+        flex-direction: column;
+        position: relative;
+    }
+
+    .navLink {
+        margin: 0.1rem 0;
+        color: var(--heading-color);
+        font-weight: 400;
+    }
+
+    .toggleBtn {
+        margin: 0;
+    }
+
+    .links ul::after {
+        content: "";
+        position: absolute;
+        width: 0%; 
+        height: 0.5px;
+        background-color: var(--heading-color);
+        opacity: 0;
+        top: -0.5rem;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: 0.3s;
+    }
+
+    header {
+        height: 505px;
+        max-height: 80px;
+        overflow: hidden;
+    }
+    header.scrolled  {
+        height: 485px;
+        max-height: 60px;
+    }
+
+   
+    body.open header {
+        min-height: 640px;
+        background-color: var(--bg-color-2);
+        scroll-behavior: none;
+    }
+    body.open .links ul::after{
+        opacity: 0.7;
+        width: 100%;
+    }
+
+    body.open header.scrolled {
+        max-height: 485px;
+    }
+
+    .showcaseArea .container {
+        grid-template-columns: 1fr;
+        height: revert;
+        justify-items: center;
+        row-gap: 4rem;
+    }
+
+    .showcaseImage {
+        min-height: revert;
+        height: 100vw;
+        border-radius: 40px;
+        max-height: 570px;
+        max-width: 450px;
+        margin-top: 0px;
+        
+    }
+
+    .showcaseImage .person {
+        border-radius: 40px;
+
+    }
 }
