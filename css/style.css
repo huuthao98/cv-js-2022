@@ -537,7 +537,8 @@ body.open .hamburger .bar:last-child {
     color: #8affad;
     animation-name: title-opacity;
     animation-duration: 2s;
-    animation-iteration-count: infinite 
+    animation-iteration-count: infinite; 
+    font-size: 2rem;
 }
 
 @keyframes title-opacity {
@@ -635,10 +636,6 @@ body.open .hamburger .bar:last-child {
     align-items: center;
     display: flex;
     margin-left: 10px
-}
-
-.services .icon{
-    font-size: .85rem;
 }
 
 .services .iconPause {
@@ -941,6 +938,10 @@ footer .socialMedia {
         height: 0;
         line-height: 0;
     }
+
+    .cta {
+        margin-top: 2rem;
+    }
     
     .links {
         order: 3;
@@ -964,6 +965,10 @@ footer .socialMedia {
 
     .toggleBtn {
         margin: 0;
+    }
+
+    .icon {
+        width: 50px;
     }
 
     .links ul::after {
@@ -1018,11 +1023,88 @@ footer .socialMedia {
         max-height: 570px;
         max-width: 450px;
         margin-top: 0px;
-        
+
+        display: flex;
+        justify-content: center;
     }
 
     .showcaseImage .person {
         border-radius: 40px;
 
+    }
+
+    .about .container {
+        grid-template-columns: 1fr;
+    }
+
+    .aboutGird {
+        order: 3;
+    }
+    .heading br {
+        display: none;
+    }
+
+    .aboutGird {
+        grid-template-columns: 150px 150px;
+        grid-template-rows: 150px 150px ;
+        column-gap: 2rem;
+        row-gap: 80px;
+        margin: 2.5rem 0 0 0;
+    }
+
+    .aboutCard h3 {
+        font-size: 0.8rem;
+    }
+
+    .servicesGird {
+        margin: 0;
+    }
+
+    .skillsWrap {
+        grid-template-columns: repeat(2, 150px);
+        row-gap: 1rem;
+    }
+
+    .skTitle {
+        margin-top: 0;
+    }
+
+    /* contact  */
+    .contact .container {
+        grid-template-columns: 1fr;
+        row-gap: 3rem;
+    }
+}
+
+/* ---------------768px SYTLE-------------------------- */
+
+@media (max-width: 500px) {
+    :root {
+        --seaction-padding: 2rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1.4rem;
+    }
+
+    .container {
+        padding: 0 1rem;
+    }
+
+    .showcaseArea .container  {
+        row-gap: 1rem;
+    }
+
+    .showcaseArea .heading {
+        font-size: 2.4rem;
+    }
+
+    .showcaseImage .person {
+        width: 70%;
+    }
+
+    .skillsWrap {
+        grid-template-columns: 1fr;
+        row-gap: 1.5rem;
     }
 }

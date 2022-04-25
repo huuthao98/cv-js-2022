@@ -50,7 +50,8 @@ const appMusic =  {
         name: 'take me to church',
         path: '/assets/song/take me to church.mp3',
         icon: '<i class="fa-solid fa-seedling"></i>'
-    }],
+    }
+  ],
     render: function() {
         const htmls = this.songs.map((song, index) => {
             return `
