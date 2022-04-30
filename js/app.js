@@ -50,6 +50,11 @@ const appMusic =  {
         name: 'take me to church',
         path: '/assets/song/take me to church.mp3',
         icon: '<i class="fa-solid fa-seedling"></i>'
+    },
+    {
+        name: 'Wellerman',
+        path: '/assets/song/wellerman.mp3',
+        icon: '<i class="fa-solid fa-cat"></i>'
     }
   ],
     render: function() {
