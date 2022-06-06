@@ -629,8 +629,18 @@ body.open .hamburger .bar:last-child {
 }
 .servicesCard.active i {
     color: red;
+    animation: iconMusicActive 5s;
+    animation-iteration-count: infinite;
 }
 
+@keyframes iconMusicActive {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 .services .control{
     align-items: center;
